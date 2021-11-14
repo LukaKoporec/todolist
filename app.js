@@ -10,7 +10,7 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static("public"));
 
-mongoose.connect("mongodb://localhost:27017/todolistDB");
+mongoose.connect("mongodb+srv://admin-luka:mandarina99@cluster0.knjlj.mongodb.net/todolistDB");
 
 const itemsSchema = {
   name: String
@@ -135,4 +135,8 @@ app.post("/work", function(req, res){
   res.redirect("/work");
 });
 
-app.listen(3000);
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 3000;
+}
+app.listen(port);
